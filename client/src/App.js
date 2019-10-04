@@ -6,21 +6,18 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = {}
   }
 
   componentDidMount() {
     axios.get('http://localhost:5000/api/players')
       .then(res => {
-        this.setState(res.data[0]);
+        this.setState({
+          players: res.data
+        });
       })
   }
   
-  currentPlayer = () => {
-    
-  }
   
 
     render() {

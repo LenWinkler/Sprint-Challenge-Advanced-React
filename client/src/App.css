@@ -34,3 +34,8 @@
     transform: rotate(360deg);
   }
 }
+
+.card-div {
+  width: 30%;
+  border: 1px solid black;
+}
