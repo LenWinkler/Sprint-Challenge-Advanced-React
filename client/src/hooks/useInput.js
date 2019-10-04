@@ -1,7 +1,7 @@
-import { useLocalStorage } from "./useLocalStorage";
+import useLocalStorage  from "./useLocalStorage";
 
-const useInput = (key, initialValue) => {
-    const [player, setPlayer] = useLocalStorage(key, initialValue);
+const useInput = () => {
+    const [player, setPlayer] = useLocalStorage('player', '');
 
     const handleChanges = e => {
         setPlayer(e.target.value);

@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 
 const PlayerCard = (props) => {
-    console.log('card props',props)
     return (
         <div className="card-div">
             <p>{`Player name: ${props.name}`}</p>
