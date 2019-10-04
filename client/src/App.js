@@ -26,17 +26,11 @@ class App extends React.Component {
     return (
       <div className="App">
         
-      <p>Women's World Cup Player's Ranked by Search Interest(June-July 2019)</p>
+      <p data-testid="app-title">Women's World Cup Player's Ranked by Search Interest(June-July 2019)</p>
       <AddPlayerToStorage />
       {this.state.players.map(item => {
         return (
-          <>
-          
-          <>
-          
           <PlayerCard key={item.id} name={item.name} country={item.country} searches={item.searches}/>
-          </>
-          </>
         )
       })}
       </div>
