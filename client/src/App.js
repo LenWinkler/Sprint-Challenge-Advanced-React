@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from "axios";
+import PlayerCard from "./components/playerCard";
+import AddPlayerToStorage from "./components/insertForm";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      players: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:5000/api/players')
+      .then(res => {
+        this.setState({
+          players: res.data
+        });
+      })
+  }
+  
+
+    render() {
+    return (
+      <div className="App">
+        
+      <p data-testid="app-title">Women's World Cup Player's Ranked by Search Interest(June-July 2019)</p>
+      <AddPlayerToStorage />
+      {this.state.players.map(item => {
+        return (
+          <PlayerCard key={item.id} name={item.name} country={item.country} searches={item.searches}/>
+        )
+      })}
+      </div>
+    );
+  }
 }
 
 export default App;
